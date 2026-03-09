@@ -1,0 +1,1427 @@
+[
+  {
+    "id_scenario": 70,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL",
+        "confidenza": 0.99
+      },
+      "camera_laterale": {
+        "testo": "ZTL",
+        "confidenza": 0.98
+      },
+      "V2I_receiver": {
+        "testo": "ZTL",
+        "confidenza": 0.97
+      }
+    },
+    "orario_rilevamento": "09:25",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 101,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO TRANSITO NAVETTE L4",
+        "confidenza": 0.65
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO ECCETTO NAVETTE",
+        "confidenza": 0.58
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "08:45",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 57,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ECCETTO MEZZI DI SOCCORSO",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "ECCETTO SOCCORSO",
+        "confidenza": 0.84
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "12:45",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 91,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "PIAZZA DEL DUOMO",
+        "confidenza": 0.99
+      },
+      "camera_laterale": {
+        "testo": "PIAZZA DEL DUOMO",
+        "confidenza": 0.97
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:10",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 40,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ECCETTO FORNITORE DALLE 08:00 ALLE 10:00",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "ECCETTO FORNITORE 08-10",
+        "confidenza": 0.77
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "09:30",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 3,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA 08:00 - 20:00",
+        "confidenza": 0.95
+      },
+      "camera_laterale": {
+        "testo": "ZTL ATTIVA 8:00 20:00",
+        "confidenza": 0.81
+      },
+      "V2I_receiver": {
+        "testo": "ZTL 08-20",
+        "confidenza": 0.91
+      }
+    },
+    "orario_rilevamento": "10:00",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 10,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI TRANSITO ECCETTO BUS",
+        "confidenza": 0.91
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO TRANSITO ECCETTO BUS",
+        "confidenza": 0.84
+      },
+      "V2I_receiver": {
+        "testo": "DIVIETO TRANSITO BUS",
+        "confidenza": 0.79
+      }
+    },
+    "orario_rilevamento": "09:45",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 49,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI TRANSITO ECCETTO NAVETTE L4",
+        "confidenza": 0.96
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO TRANSITO ECCETTO NAVETTE L4",
+        "confidenza": 0.92
+      },
+      "V2I_receiver": {
+        "testo": "TRANSITO L4 OK",
+        "confidenza": 0.94
+      }
+    },
+    "orario_rilevamento": "10:15",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 31,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI SOSTA 0-24 RIMOZIONE FORZATA",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO SOSTA 0-24",
+        "confidenza": 0.84
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "11:10",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 61,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "MERCATO RIONALE VENERDI 06:00-14:00",
+        "confidenza": 0.91
+      },
+      "camera_laterale": {
+        "testo": "MERCATO VENERDI 06-14",
+        "confidenza": 0.83
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "10:30",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 93,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA 0-24",
+        "confidenza": 0.98
+      },
+      "camera_laterale": {
+        "testo": "ZTL 0-24",
+        "confidenza": 0.95
+      },
+      "V2I_receiver": {
+        "testo": "ZTL SEMPRE",
+        "confidenza": 0.96
+      }
+    },
+    "orario_rilevamento": "03:15",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 69,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ECCETTO VEICOLI ELETTRICI",
+        "confidenza": 0.91
+      },
+      "camera_laterale": {
+        "testo": "ECCETTO ELETTRICI",
+        "confidenza": 0.86
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "09:20",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 62,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "MERCATO RIONALE VENERDI 06:00-14:00",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "MERCATO VENERDI 06-14",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "15:00",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 33,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "OBBLIGO DI SVOLTA A DESTRA",
+        "confidenza": 0.94
+      },
+      "camera_laterale": {
+        "testo": "OBBLIGO SVOLTA DESTRA",
+        "confidenza": 0.87
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "10:55",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 25,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI TRANSITO MEZZI PESANTI",
+        "confidenza": 0.93
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO MEZZI PESANTI",
+        "confidenza": 0.81
+      },
+      "V2I_receiver": {
+        "testo": "NO MEZZI PESANTI",
+        "confidenza": 0.87
+      }
+    },
+    "orario_rilevamento": "13:15",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 50,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO",
+        "confidenza": 0.99
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO",
+        "confidenza": 0.98
+      },
+      "V2I_receiver": {
+        "testo": "DIVIETO",
+        "confidenza": 0.97
+      }
+    },
+    "orario_rilevamento": "13:45",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 13,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ATTENZIONE PEDONI",
+        "confidenza": 0.86
+      },
+      "camera_laterale": {
+        "testo": "ATTENZIONE PEDONI",
+        "confidenza": 0.83
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "13:20",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 46,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA DALLE 20",
+        "confidenza": 0.88
+      },
+      "camera_laterale": {
+        "testo": "ZTL ATTIVA 20",
+        "confidenza": 0.82
+      },
+      "V2I_receiver": {
+        "testo": "ZTL 20:00",
+        "confidenza": 0.9
+      }
+    },
+    "orario_rilevamento": "14:40",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 30,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "D I V I E T O   D I   T R A N S I T O",
+        "confidenza": 0.78
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO DI TRANSITO",
+        "confidenza": 0.82
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "09:35",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 22,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL NOTTURNA 23:00-05:00",
+        "confidenza": 0.93
+      },
+      "camera_laterale": {
+        "testo": "ZTL NOTTURNA 23:00-05:00",
+        "confidenza": 0.91
+      },
+      "V2I_receiver": {
+        "testo": "ZTL 23-05",
+        "confidenza": 0.9
+      }
+    },
+    "orario_rilevamento": "16:00",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 99,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO ACCESSO",
+        "confidenza": 0.88
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO ECCETTO BUS",
+        "confidenza": 0.71
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:50",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 16,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL VARCO NON ATTIVO",
+        "confidenza": 0.99
+      },
+      "camera_laterale": {
+        "testo": "ZTL VARCO NON ATTIVO",
+        "confidenza": 0.98
+      },
+      "V2I_receiver": {
+        "testo": "VARCO INATTIVO",
+        "confidenza": 0.91
+      }
+    },
+    "orario_rilevamento": "22:45",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 44,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI ACCESSO MEZZI NON AUTORIZZATI",
+        "confidenza": 0.97
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO MEZZI NON AUTORIZZATI",
+        "confidenza": 0.89
+      },
+      "V2I_receiver": {
+        "testo": "NO NON AUTORIZZATI",
+        "confidenza": 0.85
+      }
+    },
+    "orario_rilevamento": "15:10",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 79,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "D1V1ET0 D1 ACCE550",
+        "confidenza": 0.62
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO DI ACCESSO",
+        "confidenza": 0.69
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "16:40",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 17,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ECCETTO RESIDENTI",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "ECCETTO RESIDENTI",
+        "confidenza": 0.86
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "16:20",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 48,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "R0T4T0R14",
+        "confidenza": 0.6
+      },
+      "camera_laterale": {
+        "testo": "ROTATORIA",
+        "confidenza": 0.67
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "17:20",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 42,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "LAVORI IN CORSO A 100M",
+        "confidenza": 0.96
+      },
+      "camera_laterale": {
+        "testo": "LAVORI A 100M",
+        "confidenza": 0.84
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "11:35",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 28,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DOSSO ARTIFICIALE",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "DOSSO ARTIFICIALE",
+        "confidenza": 0.89
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "08:45",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 55,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI ACCESSO DAL LUNEDI AL VENERDI",
+        "confidenza": 0.94
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO LUN-VEN",
+        "confidenza": 0.82
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "09:00",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 83,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "PARCHEGGIO A PAGAMENTO",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "PARCHEGGIO PAGAMENTO",
+        "confidenza": 0.88
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "09:50",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 71,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "Z T L",
+        "confidenza": 0.82
+      },
+      "camera_laterale": {
+        "testo": "ZTL",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "22:50",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 2,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI ACCESSO ECCETTO BUS",
+        "confidenza": 0.93
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO ACCESSO ECCETTO BUS",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "08:30",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 59,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "S3NS0 UN1C0 4LT3RN4T0",
+        "confidenza": 0.44
+      },
+      "camera_laterale": {
+        "testo": "SENSO UNICO ALTERNATO",
+        "confidenza": 0.51
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "18:15",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 26,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "PASSAGGIO A LIVELLO",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "PASSAGGIO A LIVELLO",
+        "confidenza": 0.87
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "15:55",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 68,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ACCESSO CONSENTITO AI VEICOLI ELETTRICI",
+        "confidenza": 0.94
+      },
+      "camera_laterale": {
+        "testo": "ACCESSO ELETTRICI",
+        "confidenza": 0.82
+      },
+      "V2I_receiver": {
+        "testo": "OK ELETTRICI",
+        "confidenza": 0.89
+      }
+    },
+    "orario_rilevamento": "12:35",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 38,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "Z0N4 30",
+        "confidenza": 0.65
+      },
+      "camera_laterale": {
+        "testo": "ZONA 30",
+        "confidenza": 0.71
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "20:25",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 39,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI FERMATA",
+        "confidenza": 0.95
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO FERMATA",
+        "confidenza": 0.91
+      },
+      "V2I_receiver": {
+        "testo": "NO FERMATA",
+        "confidenza": 0.88
+      }
+    },
+    "orario_rilevamento": "09:05",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 82,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "5T4Z10N3 F3RR0V14R14",
+        "confidenza": 0.51
+      },
+      "camera_laterale": {
+        "testo": "STAZIONE FERROVIARIA",
+        "confidenza": 0.58
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "19:10",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 100,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "LAVORI",
+        "confidenza": 0.97
+      },
+      "camera_laterale": {
+        "testo": "LAVORI",
+        "confidenza": 0.95
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "15:50",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 85,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "CENTRO STORICO",
+        "confidenza": 0.98
+      },
+      "camera_laterale": {
+        "testo": "CENTRO STORICO",
+        "confidenza": 0.96
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "09:40",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 32,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ATTENZIONE BAMBINI SCUOLA",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "ATTENZIONE BAMBINI",
+        "confidenza": 0.86
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "08:15",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 54,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL V.A.R.C.O. NON ATTIVO",
+        "confidenza": 0.86
+      },
+      "camera_laterale": {
+        "testo": "ZTL VARCO NON ATTIVO",
+        "confidenza": 0.83
+      },
+      "V2I_receiver": {
+        "testo": "VARCO INATTIVO",
+        "confidenza": 0.92
+      }
+    },
+    "orario_rilevamento": "16:30",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 5,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "LAVORI IN CORSO",
+        "confidenza": 0.91
+      },
+      "camera_laterale": {
+        "testo": "LAVORI IN CORSO",
+        "confidenza": 0.87
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:30",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 24,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "4R3A P3D0NAL3",
+        "confidenza": 0.58
+      },
+      "camera_laterale": {
+        "testo": "AREA PEDONALE",
+        "confidenza": 0.65
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "21:10",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 96,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL SPERIMENTALE",
+        "confidenza": 0.87
+      },
+      "camera_laterale": {
+        "testo": "ZTL SPERIMENTALE",
+        "confidenza": 0.83
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "15:20",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 97,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA 18:00-24:00",
+        "confidenza": 0.97
+      },
+      "camera_laterale": {
+        "testo": "ZTL 18-24",
+        "confidenza": 0.89
+      },
+      "V2I_receiver": {
+        "testo": "ZTL SERA",
+        "confidenza": 0.94
+      }
+    },
+    "orario_rilevamento": "19:30",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 103,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA ECCETTO NAVETTE L4",
+        "confidenza": 0.88
+      },
+      "camera_laterale": {
+        "testo": "ZTL NAVETTE L4 OK",
+        "confidenza": 0.81
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:20",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 90,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "TUTTE LE DIREZIONI",
+        "confidenza": 0.95
+      },
+      "camera_laterale": {
+        "testo": "TUTTE LE DIREZIONI",
+        "confidenza": 0.92
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "11:25",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 45,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA DALLE 20",
+        "confidenza": 0.89
+      },
+      "camera_laterale": {
+        "testo": "ZTL ATTIVA DALLE 20",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": "ZTL 20:00",
+        "confidenza": 0.91
+      }
+    },
+    "orario_rilevamento": "21:05",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 53,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL V.A.R.C.O. ATTIVO",
+        "confidenza": 0.85
+      },
+      "camera_laterale": {
+        "testo": "ZTL VARCO ATTIVO",
+        "confidenza": 0.81
+      },
+      "V2I_receiver": {
+        "testo": "VARCO ATTIVO",
+        "confidenza": 0.93
+      }
+    },
+    "orario_rilevamento": "11:20",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 78,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA 22:00 - 06:00",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "ZTL 22-06",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": "ZTL NOTTE",
+        "confidenza": 0.9
+      }
+    },
+    "orario_rilevamento": "10:00",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 76,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI TRANSITO PER VEICOLI A MOTORE",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO VEICOLI MOTORE",
+        "confidenza": 0.83
+      },
+      "V2I_receiver": {
+        "testo": "NO MOTORE",
+        "confidenza": 0.81
+      }
+    },
+    "orario_rilevamento": "11:30",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 4,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL ATTIVA 08:00 - 20:00",
+        "confidenza": 0.94
+      },
+      "camera_laterale": {
+        "testo": "ZTL ATTIVA 08:00 - 20:00",
+        "confidenza": 0.92
+      },
+      "V2I_receiver": {
+        "testo": "ZTL ATTIVA 08:00 - 20:00",
+        "confidenza": 0.97
+      }
+    },
+    "orario_rilevamento": "21:30",
+    "giorno_settimana": "Giovedì"
+  },
+  {
+    "id_scenario": 88,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL SOLO GIORNI FESTIVI",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "ZTL FESTIVI",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "10:00",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 66,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "FINE ZTL",
+        "confidenza": 0.99
+      },
+      "camera_laterale": {
+        "testo": "FINE ZTL",
+        "confidenza": 0.98
+      },
+      "V2I_receiver": {
+        "testo": "USCITA ZTL",
+        "confidenza": 0.96
+      }
+    },
+    "orario_rilevamento": "14:25",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 104,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "NAVETTE L4 NOTTE",
+        "confidenza": 0.76
+      },
+      "camera_laterale": {
+        "testo": "NAVETTE L4 22-05",
+        "confidenza": 0.71
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "23:45",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 81,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "STAZIONE FERROVIARIA",
+        "confidenza": 0.98
+      },
+      "camera_laterale": {
+        "testo": "STAZIONE FERROVIARIA",
+        "confidenza": 0.96
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "13:40",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 18,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "LIMITE MASSIMO 30 KM/H",
+        "confidenza": 0.97
+      },
+      "camera_laterale": {
+        "testo": "LIMITE 30 KM/H",
+        "confidenza": 0.88
+      },
+      "V2I_receiver": {
+        "testo": "LIMIT 30",
+        "confidenza": 0.82
+      }
+    },
+    "orario_rilevamento": "11:45",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 58,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "SENSO UNICO ALTERNATO",
+        "confidenza": 0.89
+      },
+      "camera_laterale": {
+        "testo": "SENSO UNICO ALTERNATO",
+        "confidenza": 0.86
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "08:05",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 84,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI AFFISSIONE",
+        "confidenza": 0.83
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO AFFISSIONE",
+        "confidenza": 0.79
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:15",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 23,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "AREA PEDONALE",
+        "confidenza": 0.96
+      },
+      "camera_laterale": {
+        "testo": "AREA PEDONALE",
+        "confidenza": 0.94
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "18:00",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 11,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "SENSO VIETATO",
+        "confidenza": 0.98
+      },
+      "camera_laterale": {
+        "testo": "SENSO VIETATO",
+        "confidenza": 0.96
+      },
+      "V2I_receiver": {
+        "testo": "SENSO VIETATO",
+        "confidenza": 0.93
+      }
+    },
+    "orario_rilevamento": "12:10",
+    "giorno_settimana": "Venerdì"
+  },
+  {
+    "id_scenario": 1,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI ACCESSO",
+        "confidenza": 0.96
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO DI ACCESSO",
+        "confidenza": 0.94
+      },
+      "V2I_receiver": {
+        "testo": "DIVIETO ACCESSO",
+        "confidenza": 0.88
+      }
+    },
+    "orario_rilevamento": "09:15",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 14,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "STRADA SENZA USCITA",
+        "confidenza": 0.89
+      },
+      "camera_laterale": {
+        "testo": "STRADA SENZA USCITA",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": "STRADA CHIUSA",
+        "confidenza": 0.72
+      }
+    },
+    "orario_rilevamento": "17:40",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 94,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "D I V  E T O  D I  A C C S S O",
+        "confidenza": 0.72
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO DI ACCESSO",
+        "confidenza": 0.78
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "08:40",
+    "giorno_settimana": "Lunedì"
+  },
+  {
+    "id_scenario": 29,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "RALLENTARE",
+        "confidenza": 0.94
+      },
+      "camera_laterale": {
+        "testo": "RALLENTARE",
+        "confidenza": 0.91
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:05",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 72,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI SCARICO RIFIUTI",
+        "confidenza": 0.92
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO SCARICO",
+        "confidenza": 0.84
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "16:45",
+    "giorno_settimana": "Sabato"
+  },
+  {
+    "id_scenario": 89,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZTL SOLO GIORNI FESTIVI",
+        "confidenza": 0.91
+      },
+      "camera_laterale": {
+        "testo": "ZTL FESTIVI",
+        "confidenza": 0.86
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:20",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 63,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "MERCATO RIONALE VENERDI 06:00-14:00",
+        "confidenza": 0.9
+      },
+      "camera_laterale": {
+        "testo": "MERCATO VENERDI 06-14",
+        "confidenza": 0.82
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "10:30",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 95,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "STRADA SDISSESTATA LIMITE 10 KM/H",
+        "confidenza": 0.87
+      },
+      "camera_laterale": {
+        "testo": "STRADA DISSESTATA 10",
+        "confidenza": 0.79
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "16:05",
+    "giorno_settimana": "Martedì"
+  },
+  {
+    "id_scenario": 37,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ZONA 30",
+        "confidenza": 0.99
+      },
+      "camera_laterale": {
+        "testo": "ZONA 30",
+        "confidenza": 0.97
+      },
+      "V2I_receiver": {
+        "testo": "ZONA 30",
+        "confidenza": 0.95
+      }
+    },
+    "orario_rilevamento": "16:15",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 105,
+    "sensori": {
+      "camera_frontale": {
+        "testo": null,
+        "confidenza": null
+      },
+      "camera_laterale": {
+        "testo": null,
+        "confidenza": null
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "10:15",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 41,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "ECCETTO FORNITORE DALLE 08:00 ALLE 10:00",
+        "confidenza": 0.91
+      },
+      "camera_laterale": {
+        "testo": "ECCETTO FORNITORE 08-10",
+        "confidenza": 0.79
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "14:00",
+    "giorno_settimana": "Domenica"
+  },
+  {
+    "id_scenario": 9,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI TRANSITO ECCETTO AUTORIZZATI",
+        "confidenza": 0.88
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO TRANSITO ECCETTO AUTORIZZATI",
+        "confidenza": 0.76
+      },
+      "V2I_receiver": {
+        "testo": null,
+        "confidenza": null
+      }
+    },
+    "orario_rilevamento": "07:30",
+    "giorno_settimana": "Mercoledì"
+  },
+  {
+    "id_scenario": 73,
+    "sensori": {
+      "camera_frontale": {
+        "testo": "DIVIETO DI ACCESSO ECCETTO BUS E TAXI",
+        "confidenza": 0.93
+      },
+      "camera_laterale": {
+        "testo": "DIVIETO ECCETTO BUS TAXI",
+        "confidenza": 0.85
+      },
+      "V2I_receiver": {
+        "testo": "BUS TAXI OK",
+        "confidenza": 0.88
+      }
+    },
+    "orario_rilevamento": "07:45",
+    "giorno_settimana": "Lunedì"
+  }
+]
