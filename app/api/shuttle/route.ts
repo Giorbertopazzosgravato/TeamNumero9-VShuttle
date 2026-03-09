@@ -101,12 +101,14 @@ function cleanOcrText(text: string): string {
         .trim();
 }
 
+// --- LOGICA SEMANTICA E ORARI ---
 function evaluateSemantics(text: string, time: string, day: string): "GO" | "STOP" {
+    // 1. Controlli "Salvavita"
     if (text.includes("FINE") || text.includes("NON ATTIVA") || text.includes("INATTIVO") || text.includes("VARCO NON ATTIVO") || text.includes("PREAVVISO")) {
         return "GO";
     }
 
-    // RIMOSSI i veicoli elettrici! Ora passa solo se è esplicitamente indicato il BUS, la navetta o il trasporto pubblico.
+    // 2. Eccezioni Flessibili per la navetta
     const isBusExempt = /ECCETTO.*BUS/.test(text) ||
         /ECCETTO.*NAVETTE/.test(text) ||
         /BUS.*OK/.test(text) ||
@@ -114,16 +116,19 @@ function evaluateSemantics(text: string, time: string, day: string): "GO" | "STO
         text.includes("ECCETTO AUTORIZZATI") ||
         /ECCETTO.*TRASPORTO PUBBLICO/.test(text);
 
-    if (text.includes("DIVIETO") || text.includes("SENSO VIETATO") || text.includes("STRADA CHIUSA") || text.includes("ECCETTO")) {
+    // 3. Gestione Divieti Generici, Eccezioni Implicite e Arresto Obbligatorio (STOP/ALT)
+    if (text.includes("DIVIETO") || text.includes("SENSO VIETATO") || text.includes("STRADA CHIUSA") || text.includes("ECCETTO") || text.includes("STOP") || text.includes("ALT")) {
         if (text.includes("DIVIETO DI SOSTA") || text.includes("DIVIETO FERMATA") || text.includes("SCARICO") || text.includes("AFFISSIONE")) return "GO";
         if (isBusExempt) return "GO";
         return "STOP";
     }
 
+    // 4. Gestione ZTL (Accesso Libero Sempre)
     if (text.includes("ZTL")) {
         return "GO";
     }
 
+    // 4.5 Gestione MERCATO (Ostacolo fisico a tempo)
     if (text.includes("MERCATO")) {
         const normalizedDay = day.toUpperCase().replace(/[ÀÁ]/g,"A").replace(/[ÈÉ]/g,"E").replace(/[ÌÍ]/g,"I").replace(/[ÒÓ]/g,"O").replace(/[ÙÚ]/g,"U");
         const giorni = ["LUNEDI", "MARTEDI", "MERCOLEDI", "GIOVEDI", "VENERDI", "SABATO", "DOMENICA"];
@@ -153,6 +158,7 @@ function evaluateSemantics(text: string, time: string, day: string): "GO" | "STO
         }
     }
 
+    // 5. Cartelli Informativi e di Cautela
     const safeToProceed = ["DOSSO", "RALLENTARE", "ZONA 30", "LAVORI", "PEDONI", "STAZIONE", "PARCHEGGIO", "ROTATORIA", "PIAZZA"];
     if (safeToProceed.some(keyword => text.includes(keyword))) {
         return "GO";
