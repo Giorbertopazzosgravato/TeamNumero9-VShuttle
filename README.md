@@ -22,9 +22,8 @@ VShuttle implementa un **sistema decisionale a tre livelli** con supervisione um
 4. **Human-in-the-Loop**: Se la confidenza è < 60%, richiede conferma manuale al supervisore (Marco)
 
 ### Architettura del Sistema
-![Architettura Frontend Backend](./assets/architettura-frontend-backend.png)
 
-*Inserisci qui un'immagine semplice dell'architettura complessiva (frontend, API backend, dataset JSON).*
+![Architettura Frontend Backend](./assets/Frontend%20Simulation-2026-03-09-160146.png)
 
 ### Interazione Frontend e Backend
 - Il frontend (`app/page.tsx`) carica gli scenari da `public/VShuttle-input.json`.
