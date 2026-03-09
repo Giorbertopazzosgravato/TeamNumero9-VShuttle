@@ -128,12 +128,41 @@ export default function Dashboard() {
 
   // Schermata INTERVENE (Rosso/Verde)
   if (apiResult?.azione === "INTERVENE") {
+    const confidencePercent = Math.round(apiResult.confidenza * 100);
+    const clampedWidth = Math.max(0, Math.min(100, confidencePercent));
+
     return (
       <div className="relative flex h-screen w-screen">
-        <div className="absolute top-10 left-0 right-0 z-10 text-center text-white drop-shadow-md">
+        <div className="absolute top-10 left-0 right-0 z-10 flex flex-col items-center gap-3 text-white drop-shadow-md">
           <h1 className="text-3xl font-bold">ATTENZIONE: CONFERMA RICHIESTA</h1>
-          <p className="text-xl mt-2">Timer: {timeLeft}s</p>
+          <p className="text-xl">Timer: {timeLeft}s</p>
         </div>
+        {apiResult && (
+          <div className="pointer-events-none absolute bottom-8 left-0 right-0 z-10 flex justify-center">
+            <div className="w-2/3 max-w-3xl rounded-lg bg-gray-900/80 p-4 shadow-lg">
+              <div className="mb-1 flex items-center justify-between text-sm text-gray-200">
+                <span className="font-semibold uppercase tracking-wide">
+                  {apiResult.testo_rilevato || "N/D"}
+                </span>
+                <span className="font-semibold">
+                  {confidencePercent}%
+                </span>
+              </div>
+              <div className="h-4 w-full overflow-hidden rounded-full bg-gray-700">
+                <div
+                  className={`h-full rounded-full transition-all duration-500 ease-out ${
+                    confidencePercent >= 80
+                      ? "bg-green-500"
+                      : confidencePercent >= 50
+                      ? "bg-yellow-400"
+                      : "bg-red-500"
+                  }`}
+                  style={{ width: `${clampedWidth}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
         <button
           onClick={() => handleMarcoDecision("STOP_MANUALE")}
           className="flex-1 bg-red-600 text-6xl font-bold text-white hover:bg-red-500"
@@ -153,15 +182,48 @@ export default function Dashboard() {
   // Schermata Normale (Grigia con fungo rosso)
   return (
     <div className="relative flex h-screen w-screen flex-col items-center justify-center bg-gray-700">
-      <div className="absolute top-10 text-center text-gray-300">
-        <h2 className="text-2xl font-semibold">Stato Navetta: Automatica</h2>
-        <p className="text-lg">
-          Azione in corso:{" "}
-          <span className={apiResult?.azione === "STOP" ? "text-red-400 font-bold" : "text-green-400 font-bold"}>
-            {apiResult?.azione || "ATTESA"}
-          </span>
-        </p>
+      <div className="absolute top-10 flex w-full flex-col items-center gap-4 text-center text-gray-300">
+        <div>
+          <h2 className="text-2xl font-semibold">Stato Navetta: Automatica</h2>
+          <p className="text-lg">
+            Azione in corso:{" "}
+            <span className={apiResult?.azione === "STOP" ? "text-red-400 font-bold" : "text-green-400 font-bold"}>
+              {apiResult?.azione || "ATTESA"}
+            </span>
+          </p>
+        </div>
       </div>
+      {apiResult && (() => {
+        const confidencePercent = Math.round(apiResult.confidenza * 100);
+        const clampedWidth = Math.max(0, Math.min(100, confidencePercent));
+
+        return (
+          <div className="pointer-events-none absolute bottom-6 left-0 right-0 flex justify-center">
+            <div className="w-3/4 max-w-4xl rounded-xl bg-gray-900/90 p-5 shadow-2xl">
+              <div className="mb-2 flex items-center justify-between text-lg text-gray-100">
+                <span className="font-semibold uppercase tracking-wide">
+                  {apiResult.testo_rilevato || "N/D"}
+                </span>
+                <span className="font-bold text-2xl">
+                  {confidencePercent}%
+                </span>
+              </div>
+              <div className="h-6 w-full overflow-hidden rounded-full bg-gray-700">
+                <div
+                  className={`h-full rounded-full transition-all duration-500 ease-out ${
+                    confidencePercent >= 80
+                      ? "bg-green-500"
+                      : confidencePercent >= 50
+                      ? "bg-yellow-400"
+                      : "bg-red-500"
+                  }`}
+                  style={{ width: `${clampedWidth}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })()}
       <button
         onClick={handleEmergencyStop}
         className="h-80 w-80 rounded-full border-8 border-red-800 bg-red-600 text-5xl font-extrabold text-white shadow-2xl hover:bg-red-500 active:scale-95 transition-transform"
