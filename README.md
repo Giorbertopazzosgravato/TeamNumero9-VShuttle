@@ -35,12 +35,12 @@ VShuttle implementa un **sistema decisionale a tre livelli** con supervisione um
 ## 🖼️ Visuals
 
 ### Dashboard - Modalità Automatica
-![Dashboard Automatica](./assets/dashboard-automatica.png)
+![Dashboard Automatica](./assets/dashboard_automatica.png)
 
 *La dashboard mostra lo stato della navetta in modalità automatica con il grande pulsante di emergenza rosso. L'azione corrente (GO/STOP) viene visualizzata in alto.*
 
 ### Schermata INTERVENE - Richiesta Conferma
-![Schermata Intervento](./assets/schermata-intervene.png)
+![Schermata Intervento](./assets/intervento.png)
     
 *Quando la confidenza dell'algoritmo è < 60%, compare questa schermata split-screen. Marco ha 2 secondi per decidere tra STOP (rosso) e GO (verde). Se non interviene, la navetta si ferma automaticamente (Phantom Braking).*
 
