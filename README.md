@@ -22,41 +22,16 @@ VShuttle implementa un **sistema decisionale a tre livelli** con supervisione um
 4. **Human-in-the-Loop**: Se la confidenza è < 60%, richiede conferma manuale al supervisore (Marco)
 
 ### Architettura del Sistema
-```
-┌─────────────────┐
-│  3 Sensori OCR  │ → Camera Frontale, Laterale, V2I
-└────────┬────────┘
-         │
-         ↓
-┌─────────────────┐
-│ Fusione Pesata  │ → Selezione migliore lettura + penalità gibberish
-└────────┬────────┘
-         │
-         ↓
-┌─────────────────┐
-│ Pulizia OCR     │ → Correzione caratteri (1→I, 0→O, ecc.)
-└────────┬────────┘
-         │
-         ↓
-    ┌────┴────┐
-    │Confidenza│
-    │  < 60%? │
-    └─┬───┬───┘
-  SI  │   │ NO
-      │   ↓
-      │ ┌──────────────┐
-      │ │ Valutazione  │ → ZTL orari, eccezioni, divieti
-      │ │  Semantica   │
-      │ └──────┬───────┘
-      │        ↓
-      │   ┌────┴────┐
-      │   │ GO/STOP │
-      │   └─────────┘
-      ↓
-┌─────────────────┐
-│   INTERVENE     │ → Richiesta manuale a Marco (2s timer)
-└─────────────────┘
-```
+![Architettura Frontend Backend](./assets/architettura-frontend-backend.png)
+
+*Inserisci qui un'immagine semplice dell'architettura complessiva (frontend, API backend, dataset JSON).*
+
+### Interazione Frontend e Backend
+- Il frontend (`app/page.tsx`) carica gli scenari da `public/VShuttle-input.json`.
+- Per ogni scenario, il frontend invia una richiesta `POST` a `/api/shuttle` con i dati dei sensori.
+- Il backend (`app/api/shuttle/route.ts`) esegue fusione sensori, pulizia OCR e valutazione semantica.
+- Il backend risponde con `GO`, `STOP` oppure `INTERVENE`.
+- Il frontend aggiorna la dashboard: stato automatico (`GO/STOP`) o schermata di intervento manuale (`INTERVENE`).
 
 ## 🖼️ Visuals
 
@@ -334,6 +309,7 @@ Basato su studi di Human-Machine Interface:
 - **60%**: Bilanciamento tra autonomia e sicurezza
 
 ## 🧪 Testing degli Scenari
+I file json per il testing dovranno essere inseriti nella cartella **public**
 
 Il file `VShuttle-input.json` contiene oltre 100 scenari di test che coprono:
 - ✅ ZTL con orari variabili
