@@ -15,18 +15,21 @@ export async function POST(request: Request) {
     try {
         const scenario: Scenario = await request.json();
 
+        // 1. Fusione e Normalizzazione
         const { finalString, finalConfidence } = fuseSensors(scenario.sensori);
 
+        // 2. Controllo Confidenza (Intervento di Marco)
         if (finalConfidence < CONFIDENCE_THRESHOLD) {
             return NextResponse.json({
                 id_scenario: scenario.id_scenario,
                 azione: "INTERVENE",
                 testo_rilevato: finalString,
                 confidenza: parseFloat(finalConfidence.toFixed(2)),
-                dettagli: "Testo incomprensibile o confidenza troppo bassa. Richiesto OVERRIDE."
+                dettagli: "Testo incomprensibile o confidenza troppo bassa. Richiesto OVERRIDE umano."
             });
         }
 
+        // 3. Valutazione Semantica (STOP o GO)
         const action = evaluateSemantics(finalString, scenario.orario_rilevamento, scenario.giorno_settimana);
 
         return NextResponse.json({
@@ -34,7 +37,7 @@ export async function POST(request: Request) {
             azione: action,
             testo_rilevato: finalString,
             confidenza: parseFloat(finalConfidence.toFixed(2)),
-            dettagli: action === "GO" ? "Transito consentito o eccezione applicabile." : "Divieto o ostacolo rilevato."
+            dettagli: action === "GO" ? "Transito consentito o eccezione applicabile." : "Divieto rilevato o ZTL attiva."
         });
 
     } catch (error) {
@@ -42,6 +45,7 @@ export async function POST(request: Request) {
     }
 }
 
+// --- LOGICA DI FUSIONE ---
 function fuseSensors(sensori: Scenario['sensori']) {
     const readings = [
         { name: 'V2I', data: sensori.V2I_receiver, weight: 1.1 },
@@ -74,8 +78,7 @@ function fuseSensors(sensori: Scenario['sensori']) {
 }
 
 function calculateGibberishPenalty(text: string): number {
-    const textWithoutValidNumbers = text.replace(/30|50|100|0-24|[0-9]{1,2}:[0-9]{2}|[0-9]{1,2}-[0-9]{1,2}/g, '');
-    const matches = textWithoutValidNumbers.match(/[0-9]/g);
+    const matches = text.match(/[0-9]/g);
     if (!matches) return 0;
 
     const alphanumericRatio = matches.length / text.length;
@@ -86,6 +89,8 @@ function calculateGibberishPenalty(text: string): number {
 }
 
 function cleanOcrText(text: string): string {
+    // Pulizia selettiva: corregge il "leetspeak" degli errori OCR solo nelle parole chiave,
+    // preservando così i numeri veri che ci servono per gli orari (es. 08:00)
     return text.toUpperCase()
         .replace(/D1V1ET0|D1V13T0/g, 'DIVIETO')
         .replace(/4CC3550/g, 'ACCESSO')
@@ -101,59 +106,60 @@ function cleanOcrText(text: string): string {
         .trim();
 }
 
+// --- LOGICA SEMANTICA E ORARI ---
 function evaluateSemantics(text: string, time: string, day: string): "GO" | "STOP" {
-    if (text.includes("FINE") || text.includes("NON ATTIVA") || text.includes("INATTIVO") || text.includes("VARCO NON ATTIVO") || text.includes("PREAVVISO")) {
+    // 1. Controlli "Salvavita" (Se il divieto è finito o inattivo)
+    if (text.includes("FINE") || text.includes("NON ATTIVA") || text.includes("INATTIVO") || text.includes("VARCO NON ATTIVO")) {
         return "GO";
     }
 
-    // RIMOSSI i veicoli elettrici! Ora passa solo se è esplicitamente indicato il BUS, la navetta o il trasporto pubblico.
+    // 2. Eccezioni Flessibili (Regex per trovare "ECCETTO [qualsiasi cosa] BUS")
     const isBusExempt = /ECCETTO.*BUS/.test(text) ||
         /ECCETTO.*NAVETTE/.test(text) ||
         /BUS.*OK/.test(text) ||
-        /L4.*OK/.test(text) ||
+        /OK.*ELETTRICI/.test(text) ||
         text.includes("ECCETTO AUTORIZZATI") ||
-        /ECCETTO.*TRASPORTO PUBBLICO/.test(text);
+        /ECCETTO.*ELETTRICI/.test(text);
 
-    if (text.includes("DIVIETO") || text.includes("SENSO VIETATO") || text.includes("STRADA CHIUSA") || text.includes("ECCETTO")) {
+    // 3. Gestione Divieti
+    if (text.includes("DIVIETO") || text.includes("SENSO VIETATO") || text.includes("STRADA CHIUSA")) {
+        // Ignoriamo i divieti che non riguardano la marcia
         if (text.includes("DIVIETO DI SOSTA") || text.includes("DIVIETO FERMATA") || text.includes("SCARICO") || text.includes("AFFISSIONE")) return "GO";
         if (isBusExempt) return "GO";
         return "STOP";
     }
 
+    // 4. Gestione ZTL e orari
     if (text.includes("ZTL")) {
-        return "GO";
-    }
+        if (isBusExempt) return "GO";
 
-    if (text.includes("MERCATO")) {
-        const normalizedDay = day.toUpperCase().replace(/[ÀÁ]/g,"A").replace(/[ÈÉ]/g,"E").replace(/[ÌÍ]/g,"I").replace(/[ÒÓ]/g,"O").replace(/[ÙÚ]/g,"U");
-        const giorni = ["LUNEDI", "MARTEDI", "MERCOLEDI", "GIOVEDI", "VENERDI", "SABATO", "DOMENICA"];
-        const citaUnGiorno = giorni.some(g => text.includes(g));
+        // Estrazione orari es: "08:00 - 20:00" o "08-20" o "22-06"
+        const timeMatch = text.match(/([0-9]{1,2})(?::[0-9]{2})?\s*(?:-|ALLE)\s*([0-9]{1,2})(?::[0-9]{2})?/);
 
-        if (text.includes(normalizedDay) || !citaUnGiorno) {
-            const timeRegex = /([0-9]{1,2})(?::[0-9]{2})?\s*(?:-|ALLE)\s*([0-9]{1,2})(?::[0-9]{2})?/g;
-            let match;
-            let hasTimeRestrictions = false;
-            let isActiveNow = false;
+        if (timeMatch) {
+            const startHour = parseInt(timeMatch[1]);
+            const endHour = parseInt(timeMatch[2]);
             const currentHour = parseInt(time.split(':')[0]);
 
-            while ((match = timeRegex.exec(text)) !== null) {
-                hasTimeRestrictions = true;
-                const startHour = parseInt(match[1]);
-                const endHour = parseInt(match[2]);
-
-                if (startHour < endHour) {
-                    if (currentHour >= startHour && currentHour < endHour) isActiveNow = true;
-                } else {
-                    if (currentHour >= startHour || currentHour < endHour) isActiveNow = true;
-                }
+            let isZtlActive = false;
+            if (startHour < endHour) {
+                isZtlActive = currentHour >= startHour && currentHour < endHour;
+            } else {
+                isZtlActive = currentHour >= startHour || currentHour < endHour;
             }
 
-            if (hasTimeRestrictions && isActiveNow) return "STOP";
-            if (!hasTimeRestrictions) return "STOP";
+            return isZtlActive ? "STOP" : "GO";
         }
+
+        if (text.includes("0-24") || text.includes("SEMPRE")) return "STOP";
+        if (text.includes("FESTIVI") && day === "Domenica") return "STOP";
+        if (text.includes("FESTIVI") && day !== "Domenica") return "GO";
+
+        return "STOP";
     }
 
-    const safeToProceed = ["DOSSO", "RALLENTARE", "ZONA 30", "LAVORI", "PEDONI", "STAZIONE", "PARCHEGGIO", "ROTATORIA", "PIAZZA"];
+    // 5. Cartelli Informativi
+    const safeToProceed = ["DOSSO", "RALLENTARE", "ZONA 30", "LAVORI", "PEDONI", "STAZIONE", "PARCHEGGIO", "ROTATORIA", "MERCATO", "PIAZZA"];
     if (safeToProceed.some(keyword => text.includes(keyword))) {
         return "GO";
     }

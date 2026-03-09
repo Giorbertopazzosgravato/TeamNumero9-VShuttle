@@ -15,18 +15,21 @@ export async function POST(request: Request) {
     try {
         const scenario: Scenario = await request.json();
 
+        // 1. Fusione e Normalizzazione
         const { finalString, finalConfidence } = fuseSensors(scenario.sensori);
 
+        // 2. Controllo Confidenza (Intervento di Marco)
         if (finalConfidence < CONFIDENCE_THRESHOLD) {
             return NextResponse.json({
                 id_scenario: scenario.id_scenario,
                 azione: "INTERVENE",
                 testo_rilevato: finalString,
                 confidenza: parseFloat(finalConfidence.toFixed(2)),
-                dettagli: "Testo incomprensibile o confidenza troppo bassa. Richiesto OVERRIDE."
+                dettagli: "Testo incomprensibile o confidenza troppo bassa. Richiesto OVERRIDE umano."
             });
         }
 
+        // 3. Valutazione Semantica (STOP o GO)
         const action = evaluateSemantics(finalString, scenario.orario_rilevamento, scenario.giorno_settimana);
 
         return NextResponse.json({
@@ -34,7 +37,7 @@ export async function POST(request: Request) {
             azione: action,
             testo_rilevato: finalString,
             confidenza: parseFloat(finalConfidence.toFixed(2)),
-            dettagli: action === "GO" ? "Transito consentito o eccezione applicabile." : "Divieto o ostacolo rilevato."
+            dettagli: action === "GO" ? "Transito consentito o eccezione applicabile." : "Divieto rilevato o ZTL attiva."
         });
 
     } catch (error) {
@@ -42,6 +45,7 @@ export async function POST(request: Request) {
     }
 }
 
+// --- LOGICA DI FUSIONE ---
 function fuseSensors(sensori: Scenario['sensori']) {
     const readings = [
         { name: 'V2I', data: sensori.V2I_receiver, weight: 1.1 },
@@ -74,10 +78,13 @@ function fuseSensors(sensori: Scenario['sensori']) {
 }
 
 function calculateGibberishPenalty(text: string): number {
+    // Rimuove i numeri legittimi e i pattern noti prima di contare i caratteri anomali
     const textWithoutValidNumbers = text.replace(/30|50|100|0-24|[0-9]{1,2}:[0-9]{2}|[0-9]{1,2}-[0-9]{1,2}/g, '');
+
     const matches = textWithoutValidNumbers.match(/[0-9]/g);
     if (!matches) return 0;
 
+    // Calcola il rapporto sulla lunghezza originale per non falsare i pesi
     const alphanumericRatio = matches.length / text.length;
 
     if (alphanumericRatio > 0.5) return 0.4;
@@ -101,59 +108,71 @@ function cleanOcrText(text: string): string {
         .trim();
 }
 
+// --- LOGICA SEMANTICA E ORARI ---
 function evaluateSemantics(text: string, time: string, day: string): "GO" | "STOP" {
+    // 1. Controlli "Salvavita" (Se il divieto è finito, inattivo o è solo un preavviso)
     if (text.includes("FINE") || text.includes("NON ATTIVA") || text.includes("INATTIVO") || text.includes("VARCO NON ATTIVO") || text.includes("PREAVVISO")) {
         return "GO";
     }
 
-    // RIMOSSI i veicoli elettrici! Ora passa solo se è esplicitamente indicato il BUS, la navetta o il trasporto pubblico.
+    // 2. Eccezioni Flessibili
     const isBusExempt = /ECCETTO.*BUS/.test(text) ||
         /ECCETTO.*NAVETTE/.test(text) ||
         /BUS.*OK/.test(text) ||
-        /L4.*OK/.test(text) ||
+        /OK.*ELETTRICI/.test(text) ||
         text.includes("ECCETTO AUTORIZZATI") ||
+        /ECCETTO.*ELETTRICI/.test(text) ||
         /ECCETTO.*TRASPORTO PUBBLICO/.test(text);
 
-    if (text.includes("DIVIETO") || text.includes("SENSO VIETATO") || text.includes("STRADA CHIUSA") || text.includes("ECCETTO")) {
+    // 3. Gestione Divieti Generici
+    if (text.includes("DIVIETO") || text.includes("SENSO VIETATO") || text.includes("STRADA CHIUSA")) {
         if (text.includes("DIVIETO DI SOSTA") || text.includes("DIVIETO FERMATA") || text.includes("SCARICO") || text.includes("AFFISSIONE")) return "GO";
         if (isBusExempt) return "GO";
         return "STOP";
     }
 
+    // 4. Gestione ZTL, Giorni e Orari
     if (text.includes("ZTL")) {
-        return "GO";
-    }
+        if (isBusExempt) return "GO";
 
-    if (text.includes("MERCATO")) {
-        const normalizedDay = day.toUpperCase().replace(/[ÀÁ]/g,"A").replace(/[ÈÉ]/g,"E").replace(/[ÌÍ]/g,"I").replace(/[ÒÓ]/g,"O").replace(/[ÙÚ]/g,"U");
-        const giorni = ["LUNEDI", "MARTEDI", "MERCOLEDI", "GIOVEDI", "VENERDI", "SABATO", "DOMENICA"];
-        const citaUnGiorno = giorni.some(g => text.includes(g));
-
-        if (text.includes(normalizedDay) || !citaUnGiorno) {
-            const timeRegex = /([0-9]{1,2})(?::[0-9]{2})?\s*(?:-|ALLE)\s*([0-9]{1,2})(?::[0-9]{2})?/g;
-            let match;
-            let hasTimeRestrictions = false;
-            let isActiveNow = false;
-            const currentHour = parseInt(time.split(':')[0]);
-
-            while ((match = timeRegex.exec(text)) !== null) {
-                hasTimeRestrictions = true;
-                const startHour = parseInt(match[1]);
-                const endHour = parseInt(match[2]);
-
-                if (startHour < endHour) {
-                    if (currentHour >= startHour && currentHour < endHour) isActiveNow = true;
-                } else {
-                    if (currentHour >= startHour || currentHour < endHour) isActiveNow = true;
-                }
-            }
-
-            if (hasTimeRestrictions && isActiveNow) return "STOP";
-            if (!hasTimeRestrictions) return "STOP";
+        // Controllo giorni festivi prioritario
+        const isFestivo = day === "Domenica";
+        if (text.includes("FESTIVI")) {
+            if (!isFestivo) return "GO";
+            // Se è Domenica, prosegue per vedere se ci sono orari specifici o se è 0-24
         }
+
+        // Estrazione orari multipli (es: "08:00 - 12:00 E 14:00 - 18:00" o "08-12")
+        const timeRegex = /([0-9]{1,2})(?::[0-9]{2})?\s*(?:-|ALLE)\s*([0-9]{1,2})(?::[0-9]{2})?/g;
+        let match;
+        let hasTimeRestrictions = false;
+        let isActiveNow = false;
+        const currentHour = parseInt(time.split(':')[0]);
+
+        // Controlla tutte le fasce orarie trovate
+        while ((match = timeRegex.exec(text)) !== null) {
+            hasTimeRestrictions = true;
+            const startHour = parseInt(match[1]);
+            const endHour = parseInt(match[2]);
+
+            if (startHour < endHour) {
+                if (currentHour >= startHour && currentHour < endHour) isActiveNow = true;
+            } else {
+                if (currentHour >= startHour || currentHour < endHour) isActiveNow = true;
+            }
+        }
+
+        if (hasTimeRestrictions) {
+            return isActiveNow ? "STOP" : "GO";
+        }
+
+        if (text.includes("0-24") || text.includes("SEMPRE")) return "STOP";
+
+        return "STOP";
     }
 
-    const safeToProceed = ["DOSSO", "RALLENTARE", "ZONA 30", "LAVORI", "PEDONI", "STAZIONE", "PARCHEGGIO", "ROTATORIA", "PIAZZA"];
+    // 5. Cartelli Informativi e di Cautela
+    const safeToProceed = ["DOSSO", "RALLENTARE", "ZONA 30", "LAVORI", "PEDONI", "STAZIONE", "PARCHEGGIO", "ROTATORIA", "MERCATO", "PIAZZA"];
     if (safeToProceed.some(keyword => text.includes(keyword))) {
         return "GO";
     }
