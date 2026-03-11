@@ -4,6 +4,19 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat&logo=typescript)
 ![React](https://img.shields.io/badge/React-19.2.3-blue?style=flat&logo=react)
 
+
+
+## 🤝 Team Numero 9
+
+Tutti i membri del team hanno partecipato attivamente alla revisione del codice, al debugging e 
+alla stesura della documentazione per garantire la coerenza del progetto, ma in particolare i focus sono stati:
+* **Giacomo Consani**: Backend/Frontend
+* **Fabio Tognarelli**: principalmente Frontend
+* **Samuele Saletti**: documentazione
+
+**Tecnologie**: Next.js, React, TypeScript, Tailwind CSS
+
+
 ## 📋 Descrizione del Progetto
 
 ### Il Problema
@@ -353,11 +366,7 @@ TeamNumero9-VShuttle/
 ```
 
 
-## 🤝 Team Numero 9
 
-Progetto sviluppato per l'hackathon di sistemi di guida autonoma.
-
-**Tecnologie**: Next.js, React, TypeScript, Tailwind CSS
 
 
 ---
